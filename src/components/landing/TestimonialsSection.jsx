@@ -1,19 +1,21 @@
 import { Star, Quote } from 'lucide-react';
+import jose from '../../Images/testimonios/jose.jpg';
+import loren from '../../Images/testimonios/loren.jpg';
 const TestimonialsSection = () => {
   const testimonials = [
     {
       id: 1,
       name: "Jose Larrada",
       location: "Valledupar, Cesar",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b098?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+      image: jose,
       rating: 5,
       text: "Una experiencia increíble en Cabo de la Vela. Los guías son muy profesionales y conocen cada rincón de La Guajira. Definitivamente volveré con mi familia."
     },
     {
       id: 2,
-      name: "Carlos Mendoza",
+      name: "Maria Romani",
       location: "Medellín, Colombia",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+      image: loren,
       rating: 5,
       text: "El tour a la Sierra Nevada superó todas mis expectativas. La organización fue perfecta y pude conectar realmente con la naturaleza y la cultura local."
     },

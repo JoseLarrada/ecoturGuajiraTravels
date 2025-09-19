@@ -1,11 +1,14 @@
 import { Clock,Star, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import pilon from '../../Images/Cabo/pilon-de-azucar.jpg';
+import montes from '../../Images/MontesDeOca/Cascadas.jpg';
+import punta from '../../Images/PuntaGallina/principal.jpg'; 
 
 const FeaturedTours = () => {
   const tours = [
     {
       id: 1,
-      image: "src/Images/Cabo/pilon-de-azucar.jpg",
+      image: pilon,
       title: "Cabo de la Vela Mágico",
       duration: "4 días / 3 noches",
       price: "280,000",
@@ -16,7 +19,7 @@ const FeaturedTours = () => {
     },
     {
       id: 2,
-      image: "src/Images/MontesDeOca/Cascadas.jpg",
+      image: montes,
       title: "Montes de Oca",
       duration: "1 día",
       price: "250.000",
@@ -27,7 +30,7 @@ const FeaturedTours = () => {
     },
     {
       id: 3,
-      image: "src/Images/PuntaGallina/principal.jpg",
+      image: punta,
       title: "Punta Gallinas Extremo",
       duration: "3 días / 2 noches",
       price: "800,000",

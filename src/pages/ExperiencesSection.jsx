@@ -1,5 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Sun, Compass, Heart, Mountain } from 'lucide-react';
+import senderismo from '../Images/MontesDeOca/senderismo-.webp';
+import sendero from '../Images/MontesDeOca/Sendero.jpg';
+import rios from '../Images/MontesDeOca/RiosCristalinos.webp';
+import bahia from '../Images/PuntaGallina/Bahia_hondita.jpeg';
+import dunas from '../Images/PuntaGallina/dunas.webp';
+import punta from '../Images/PuntaGallina/principal.jpg';
+import flamencos from '../Images/camarones/flamencos.jpg';
+import manglares from '../Images/camarones/Manglares.png';
+import pesca from '../Images/camarones/pescaArtesanal.png';
+
 
 const ExperiencesSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -13,9 +23,9 @@ const ExperiencesSection = () => {
       title: "Montes de Oca",
       phrase: "Reserva natural, la mas hermosa de Colombia",
       images: [
-        "src/Images/MontesDeOca/senderismo-.webp",
-        "src/Images/MontesDeOca/Sendero.jpg",
-        "src/Images/MontesDeOca/RiosCristalinos.webp"
+        senderismo,
+        sendero,
+        rios
       ],
       color: "from-emerald-400 to-green-600",
       icon: Sun,
@@ -25,9 +35,9 @@ const ExperiencesSection = () => {
       title: "Punta Gallinas",
       phrase: "El último suspiro de Suramérica",
       images: [
-        "src/Images/PuntaGallina/Bahia_hondita.jpeg",
-        "src/Images/PuntaGallina/dunas.webp",
-        "src/Images/PuntaGallina/principal.jpg"
+        bahia,
+        dunas,
+        punta
       ],
       color: "from-green-400 to-emerald-700",
       icon: Compass,
@@ -37,9 +47,9 @@ const ExperiencesSection = () => {
       title: "Flamencos Rosados",
       phrase: "Ballet natural en aguas cristalinas",
       images: [
-        "src/Images/camarones/flamencos.jpg",
-        "src/Images/camarones/Manglares.png",
-        "src/Images/camarones/pescaArtesanal.png"
+        flamencos,
+        manglares,
+        pesca
       ],
       color: "from-green-500 to-emerald-600",
       icon: Mountain,
@@ -71,19 +81,30 @@ const ExperiencesSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Inicializar índices de imágenes
+  useEffect(() => {
+    const initialIndices = {};
+    experiences.forEach(exp => {
+      initialIndices[exp.id] = 0;
+    });
+    setCurrentImageIndex(initialIndices);
+  }, []);
+
   // Auto-rotate images for each experience
   useEffect(() => {
-    const intervals = experiences.map((experience, index) => {
-      return setInterval(() => {
+    const intervals = {};
+    
+    experiences.forEach((experience, index) => {
+      intervals[experience.id] = setInterval(() => {
         setCurrentImageIndex(prev => ({
           ...prev,
           [experience.id]: ((prev[experience.id] || 0) + 1) % experience.images.length
         }));
-      }, 3000 + (index * 500)); // Different timing for each experience
+      }, 4000 + (index * 1000)); // Tiempo diferente para cada experiencia
     });
 
     return () => {
-      intervals.forEach(interval => clearInterval(interval));
+      Object.values(intervals).forEach(interval => clearInterval(interval));
     };
   }, [experiences]);
 
@@ -189,7 +210,7 @@ const ExperiencesSection = () => {
           key={experience.id}
           className="min-h-screen relative overflow-hidden"
         >
-          {/* Dynamic image carousel with parallax */}
+          {/* Dynamic image carousel with parallax - SIN OVERLAY OPACO */}
           <div className="absolute inset-0 z-0">
             {experience.images.map((image, imgIndex) => (
               <div
@@ -208,21 +229,8 @@ const ExperiencesSection = () => {
             ))}
           </div>
 
-          {/* Static overlay effect - solo en desktop */}
-          {!isMobile && (
-            <div className="absolute inset-0 z-5">
-              <div className="w-full h-full" style={{
-                background: `
-                  linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%),
-                  linear-gradient(-45deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%)
-                `,
-                backgroundSize: '20px 20px'
-              }}></div>
-            </div>
-          )}
-
-          {/* Overlay gradient */}
-          <div className={`absolute inset-0 bg-gradient-to-r ${experience.color} opacity-40 z-10`}></div>
+          {/* Overlay gradient MÁS SUTIL - Solo para legibilidad del texto */}
+          <div className={`absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-black/30 z-10`}></div>
 
           {/* Content */}
           <div className="relative z-20 min-h-screen flex items-center justify-center px-4 sm:px-6">
@@ -236,7 +244,7 @@ const ExperiencesSection = () => {
               >
                 {/* Icon */}
                 <div className="mb-6 sm:mb-8 flex justify-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
                     {React.createElement(experience.icon, { className: "w-8 h-8 sm:w-10 sm:h-10 text-white" })}
                   </div>
                 </div>
@@ -261,7 +269,7 @@ const ExperiencesSection = () => {
 
           {/* Number indicator - Responsive */}
           <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 z-30">
-            <div className="text-4xl sm:text-6xl md:text-8xl font-bold text-white/30 drop-shadow-lg">
+            <div className="text-4xl sm:text-6xl md:text-8xl font-bold text-white/40 drop-shadow-lg">
               0{index + 1}
             </div>
           </div>
@@ -273,7 +281,7 @@ const ExperiencesSection = () => {
                 <div 
                   key={imgIdx}
                   className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-500 ${
-                    imgIdx === currentImg ? 'bg-white w-4 sm:w-6' : 'bg-white/40'
+                    imgIdx === currentImg ? 'bg-white w-4 sm:w-6' : 'bg-white/50'
                   }`}
                 />
               ))}

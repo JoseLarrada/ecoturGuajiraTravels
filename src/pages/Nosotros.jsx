@@ -1,5 +1,12 @@
 import React from 'react';
 import { MapPin, Phone, Building, Award, Users, Camera, ArrowRight } from 'lucide-react';
+import historia from '../Images/testimonios/Historia.jpg';
+import desierto from '../Images/Cabo/deiserto.jpg';
+import second from '../Images/MontesDeOca/senderismo-.webp';
+import palomino from '../Images/Palomino/RioPlaya.webp';
+import faro from '../Images/Cabo/Faro-de-Cabo-de-la-Vela-viajar-a-colombia-aventureros-360-10-.jpg';
+import sierra from '../Images/Palomino/sierraFondo.jpg';
+import indigena from '../Images/Palomino/Indigenas.jpg';
 
 const Nosotros = () => {
   // Datos de la empresa
@@ -32,12 +39,12 @@ const Nosotros = () => {
 
   // Fotos placeholder para el mosaico (reemplaza con tus URLs reales)
   const experienciasFotos = [
-    { id: 1, url: "src/Images/Cabo/deiserto.jpg", alt: "Desierto de La Guajira", descripcion: "Aventuras en el desierto" },
-    { id: 2, url: "src/Images/MontesDeOca/senderismo-.webp", alt: "Bosque tropical", descripcion: "Ecoturismo en la naturaleza" },
-    { id: 3, url: "src/Images/Palomino/RioPlaya.webp", alt: "Playa caribeña", descripcion: "Costas del Caribe" },
-    { id: 4, url: "src/Images/Cabo/Faro-de-Cabo-de-la-Vela-viajar-a-colombia-aventureros-360-10-.jpg", alt: "Atardecer", descripcion: "Experiencias únicas" },
-    { id: 5, url: "src/Images/Palomino/sierraFondo.jpg", alt: "Montañas", descripcion: "Sierra Nevada" },
-    { id: 6, url: "src/Images/Palomino/Indigenas.jpg", alt: "Cultura local", descripcion: "Cultura Wayuu" }
+    { id: 1, url: desierto, alt: "Desierto de La Guajira", descripcion: "Aventuras en el desierto" },
+    { id: 2, url: second, alt: "Bosque tropical", descripcion: "Ecoturismo en la naturaleza" },
+    { id: 3, url: palomino, alt: "Playa caribeña", descripcion: "Costas del Caribe" },
+    { id: 4, url: faro, alt: "Atardecer", descripcion: "Experiencias únicas" },
+    { id: 5, url: sierra, alt: "Montañas", descripcion: "Sierra Nevada" },
+    { id: 6, url: indigena, alt: "Cultura local", descripcion: "Cultura Wayuu" }
   ];
 
   return (
@@ -58,7 +65,7 @@ const Nosotros = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" 
+                src={historia} 
                 alt="Equipo Ecotur" 
                 className="rounded-2xl shadow-2xl"
               />
