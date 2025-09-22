@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.12.2",
     "emailjs-com": "^3.2.0",
     "lucide-react": "^0.536.0",
     "react": "^19.1.0",
